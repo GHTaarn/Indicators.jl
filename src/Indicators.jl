@@ -23,6 +23,7 @@ module Indicators
     include("patterns.jl")
     include("chaos.jl")
 
-    using Temporal
-    include("temporal.jl")
+    if !isdefined(Base, :get_extension)
+        include("../ext/IndicatorsTemporalExt.jl")
+    end
 end
