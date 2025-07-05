@@ -28,7 +28,7 @@ wma(x::Array{T}; n::Int64=10, wts::Array{T}=collect(1:n)/sum(1:n))::Array{Float6
 
 Weighted moving average (WMA)
 """
-function wma(x::AbstractArray{T}; n::Int64=10, wts::AbstractArray{T}=collect(1:n)/sum(1:n)) where {T<:Real}
+function wma(x::AbstractArray{<:Real}; n::Int64=10, wts::AbstractArray{<:Real}=collect(1:n)/sum(1:n))
     @assert n<size(x,1) && n>0 "Argument n out of bounds"
     out = fill(NaN, size(x,1))
     @inbounds for i = n:size(x,1)

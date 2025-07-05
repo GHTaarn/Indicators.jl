@@ -119,4 +119,9 @@
         @test size(tmp, 1) == N
         @test size(tmp, 2) == 1           
     end
+    @testset "wma" begin
+        @test isequal(wma(ones(Real, 4); n=2, wts=fill(0.5, 2)), [NaN, 1, 1, 1])
+        @test isequal(wma(ones(Float64, 4); n=2, wts=fill(0.5, 2)), [NaN, 1, 1, 1])
+        @test isequal(wma(ones(Int64, 4); n=2, wts=ones(Float64, 2)), [NaN, 2, 2, 2])
+    end
 end
